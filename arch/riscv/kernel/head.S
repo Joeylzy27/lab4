@@ -82,18 +82,18 @@ _supervisor:
 	/*your code*/
 	li t0, 0xFFFFFFDF80000000 # -0x80000000+0xffffffe000000000
 	li t1, 0x0
-	li t2, trap_s
-	li t3, start_kernel
-	li t4, init_stack_top
+	la t2, trap_s
+	la t3, start_kernel
+	la t4, init_stack_top
 	li t5, 0x8000000000000000
-	li t6, _end		#加载页表项的物理基址
+	la t6, _end		#加载页表项的物理基址
 	srli t6, t6, 12 #获取页表项的物理基页, &_end >> 12
 	add t2, t2, t0	#计算trap_s的虚拟地址
 	add t3, t3, t0 	#计算start_kernel的虚拟地址
 	add t5, t5, t6	#加载MMU下的satp
 	csrw satp, t1 
 	csrw stvec, t2 
-	li sp, stack_top
+	la sp,stack_top
 	call paging_init
 	csrw satp, t5
 	sfence.vma 

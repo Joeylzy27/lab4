@@ -15,7 +15,7 @@ sched.o: sched.c
 	$(GCC) -c -g sched.c $(CFLAG)
 
 vm.o : vm.c
-	$(GCC) -c -g vm.c $(CFLAG)
+	$(GCC) -c -g vm.c $(CFLAG) --save-temps
 
 clean:
 	-rm -f *.o

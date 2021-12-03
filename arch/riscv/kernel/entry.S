@@ -11,6 +11,7 @@ trap_s:
 	# call handler(scause)
 	# load sepc and caller-saved registers
 	/*your code*/
+trap_s:
 	#save callee-saved registers and spec
 	addi sp,sp,-248
 	sd x1,240(sp)
@@ -94,7 +95,7 @@ init_epc:
 	sret
 
 __switch_to:
-	li    a4,  40 
+li    a4,  40 
 	add   a3, a0, a4
 	add   a4, a1, a4
 	#Save context into prev->thread

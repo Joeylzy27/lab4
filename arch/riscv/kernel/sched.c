@@ -37,7 +37,7 @@ void task_init(void)
 			task[i]->priority = PRIORITY_INIT_COUNTER[i];
 			task[i]->pid = i;
 			task[i]->thread.sp = (unsigned long long)task[i] + TASK_SIZE;
-			task[i]->thread.ra = (void *)(init_epc);
+			task[i]->thread.ra = (uint64_t)(init_epc);
 
 			puts("[PID = ");
 			puti(task[i]->pid);
