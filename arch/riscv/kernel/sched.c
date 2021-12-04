@@ -66,12 +66,14 @@ void schedule(void)
 {
 	unsigned char next;
 	unsigned char i;
-	for (i = 4; i > 0; i--)
-		if (task[i]->counter != 0)
-			break;
-	if (i == 0)
-	{
-		for (int i = 1; i < LAB_TEST_NUM; i++)
+
+	while(1){
+		for (i = 4; i > 0; i--)
+			if (task[i]->counter != 0)
+				break;
+		
+		if(i) break;
+		for (int i = 1; i <= LAB_TEST_NUM; i++)
 		{
 			task[i]->counter = rand();
 			puts("[PID = ");
@@ -80,15 +82,15 @@ void schedule(void)
 			puti(task[i]->counter);
 			puts("\n");
 		}
-		schedule();
+// 		schedule();	
 	}
-	else
-	{
+// 	else
+// 	{
 		next = i;
 		for (i = i - 1; i > 0; i--)
 			if (task[i]->counter > 0 && task[i]->counter < task[next]->counter)
 				next = i;
-	}
+// 	}
 
 	if (current->pid != task[next]->pid)
 	{
