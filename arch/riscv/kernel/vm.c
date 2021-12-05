@@ -91,33 +91,5 @@ void paging_init()
     {
         create_mapping(pgtbl, pa, pa, 0x1000, 3);
     }
-
-    /**没有对section进行保护****/
-    // putullHex(page_count);
-    // puts("\n");
-    // for (uint64_t va = 0xffffffe000000000; va < 0xffffffe001000000; va = va + 0x1000)
-    // {
-    //     // puts("------");
-    //     // putullHex(va);
-    //     // puts("\n");
-    //     create_mapping(pgtbl, va, va - offset, 0x1000, 7);
-    //     create_mapping(pgtbl, va - offset, va - offset, 0x1000, 7);
-    // }
-    // puts("hello1\n");
-    // // for (uint64_t va = 0xffffffe000000000; va < 0xffffffe001000000; va = va + 0x1000)
-    // // {
-    // //     // puts("------");
-    // //     // putullHex(va);
-    // //     // puts("\n");
-    // //     create_mapping(pgtbl, va - offset, va - offset, 0x1000, 7);
-    // // }
-    // puts("hello2\n");
-
-    // for (uint64_t pa = 0x10000000; pa < 0x10001000; pa = pa + PAGE_SIZE)
-    // {
-    //     create_mapping(pgtbl, pa, pa, 0x1000, 7);
-    // }
-    // putullHex(page_count);
-    // puts("\n");
 }
 #pragma GCC pop_options

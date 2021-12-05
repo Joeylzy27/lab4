@@ -7,6 +7,11 @@
 .extern handler_s
 
 trap_s:
+	# save sepc and caller-saved registers
+	# call handler(scause)
+	# load sepc and caller-saved registers
+	/*your code*/
+trap_s:
 	#save callee-saved registers and spec
 	addi sp,sp,-248
 	sd x1,240(sp)
@@ -43,6 +48,7 @@ trap_s:
 	csrr a1,sepc
 	sd a1,0(sp)
 	# call handler_s(scause)
+	addi a1,sp,0
 	csrr a0,scause
 	call handler_s
 	# load sepc and callee-saved registers
